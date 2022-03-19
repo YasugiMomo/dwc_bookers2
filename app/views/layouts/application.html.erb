@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet__tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -15,18 +15,21 @@
         <li>
           <%= link_to "Bookers", '/' %>
         </li>
+        <!--userのshowへ遷移-->
         <li>
-          <%= link_to "Home", '/' %>
+          <%= link_to "Home",  %>
         </li>
-      <% if user_signed_in? %>    
+      <% if user_signed_in? %>
+     　 <!--userのindexへ遷移-->
         <li>
-          <%= link_to "Users", '/' %>
+          <%= link_to "Users", %>
         </li>
-      <% else %>
+      <% else %>　
         <li>
           <%= link_to "About", '/home/about' %>
         </li>
-      
+      <% end %>
+
         <li>
           <%= link_to "Sign up", new_user_registration_path %>
         </li>
@@ -39,7 +42,7 @@
           <%= link_to "Log in", new_user_session_path %>
         </li>
       <% end %>
-    
+
     </header>
     <%= yield %>
   </body>
