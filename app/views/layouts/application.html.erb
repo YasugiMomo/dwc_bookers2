@@ -12,38 +12,58 @@
 
   <body>
     <header>
-        <li>
-          <%= link_to "Bookers", '/' %>
-        </li>
-        <!--userのshowへ遷移-->
-        <li>
-          <%= link_to "Home", '/' %>
-        </li>
-      <% if user_signed_in? %>
-     　 <!--userのindexへ遷移-->
-        <li>
-          <%= link_to "Users", '/' %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "About", '/home/about' %>
-        </li>
-      <% end %>
-
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "Log in", new_user_session_path %>
-        </li>
-      <% end %>
-
+      <nav class="navbar nabvar-expand-1g navbar-dark bg-dark">
+        <div class="container">
+              <%= link_to '/', class: "navbar-brand" do %>
+                <span>Bookers</span>
+              <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" air-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <li>
+                <%= link_to "Home", '/', class: "fas fa-home nav-link text-light" %>
+              </li>
+              <% if user_signed_in? %>
+     　        <!--userのindexへ遷移-->
+              <li>
+                <%= link_to "Users", '/', class: "" %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "About", '/home/about', class: "fas fa-link nav-link text-light" %>
+              </li>
+            <% end %>
+              <li>
+                <%= link_to "Sign up", new_user_registration_path, class: "fas fa-user-plus nav-link text-light" %>
+              </li>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to "Log out", destroy_user_session_path, class: "" , method: :delete %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "Log in", new_user_session_path, class: "fas fa-sign-in-alt nav-link text-light" %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
+
+    <main class="mb-auto">
     <%= yield %>
+    </main>
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
