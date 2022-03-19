@@ -15,7 +15,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <%= link_to '/', class: "navbar-brand" do %>
-             <span>Bookers2</span>
+             <span>Bookers</span>
           <% end %>
           <!--ハンバーガー-->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -32,7 +32,7 @@
                   <span>Home</span>
                 <% end %>
               </li>
-              
+
               <% if user_signed_in? %>
               <!--userの一覧画面-->
               <li>
@@ -44,22 +44,22 @@
               <% else %>
               <!--homesのaboutページ-->
               <li>
-                 <%= link_to '/homes/about', class: "nav-link text-light" do %>
+                 <%= link_to about_path, class: "nav-link text-light" do %>
                    <i class="fas fa-link"></i>
                   <span>About</span>
                 <% end %>
               </li>
               <% end %>
-              
+
               <li>
-                <%= link_to '/users/sigh_up', class: "nav-link text-light" do %>
+                <%= link_to '/users/sign_up', class: "nav-link text-light" do %>
                    <i class="fas fa-user-plus"></i>
                   <span>Sign up</span>
                 <% end %>
               </li>
-              
+
               <% if user_signed_in? %>
-              
+
               <li>
                 <%= link_to '/users/sign_out', class: "nav-link text-light", method: :delete do %>
                    <i class="fas fa-sign-out-alt"></i>
@@ -80,8 +80,6 @@
         </div>
       </nav>
     </header>
-
-
 
     <main class="mb-auto">
     <%= yield %>
