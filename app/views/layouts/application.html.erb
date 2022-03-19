@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet__tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -17,14 +17,14 @@
         </li>
         <!--userのshowへ遷移-->
         <li>
-          <%= link_to "Home",  %>
+          <%= link_to "Home", '/' %>
         </li>
       <% if user_signed_in? %>
      　 <!--userのindexへ遷移-->
         <li>
-          <%= link_to "Users", %>
+          <%= link_to "Users", '/' %>
         </li>
-      <% else %>　
+      <% else %>
         <li>
           <%= link_to "About", '/home/about' %>
         </li>
