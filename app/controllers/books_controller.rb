@@ -22,7 +22,7 @@ class BooksController < ApplicationController
     # データをデータベースに保存するためのsaveメソッド実行
     @book.save
     # booksのshow画面へリダイレクト
-    redirect_to books_path
+    redirect_to book_path(@book.user_id)
   end
 
 
