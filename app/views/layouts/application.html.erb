@@ -41,6 +41,20 @@
                   <span>Users</span>
                 <% end %>
               </li>
+              <!--bookの一覧画面-->
+              <li>
+                 <%= link_to '/books', class: "nav-link text-light" do %>
+                   <i class="fas fa-book-open"></i>
+                  <span>Books</span>
+                <% end %>
+              </li>
+              <!--Log out-->
+              <li>
+                <%= link_to '/users/sign_out', class: "nav-link text-light", method: :delete do %>
+                   <i class="fas fa-sign-out-alt"></i>
+                  <span>Log out</span>
+                <% end %>
+              </li>
               <% else %>
               <!--homesのaboutページ-->
               <li>
@@ -49,25 +63,13 @@
                   <span>About</span>
                 <% end %>
               </li>
-              <% end %>
-
               <li>
                 <%= link_to '/users/sign_up', class: "nav-link text-light" do %>
                    <i class="fas fa-user-plus"></i>
                   <span>Sign up</span>
                 <% end %>
               </li>
-
-              <% if user_signed_in? %>
-
               <li>
-                <%= link_to '/users/sign_out', class: "nav-link text-light", method: :delete do %>
-                   <i class="fas fa-sign-out-alt"></i>
-                  <span>Sign out</span>
-                <% end %>
-              </li>
-              <% else %>
-                <li>
                 <%= link_to '/users/sign_in', class: "nav-link text-light" do %>
                    <i class="fas fa-sign-in-alt"></i>
                   <span>Log in</span>
