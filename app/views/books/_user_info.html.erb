@@ -1,0 +1,45 @@
+<!--共通テンプレート-->
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <!--プロフィール画像-->
+      <%= image_tag user.get_profile_image(100,100) %>
+      <table class="table">
+        <tbody>
+          <tr></tr>
+          <tr>
+            <th>name</th>
+            <th><%= user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+           <!--userのプロフィール編集画面へのリンクボタン-->
+      <div class="row">
+        <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+         <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
+
+      <!--投稿フォーム-->
+      <h2 class="mt-3">New book</h2>
+      <%= form_with model: new do |f| %>
+
+      <div class="form-group">
+        <label for="book_title">Title</label><br>
+        <%= f.text_field :title %>
+      </div>
+
+      <div class="form-group">
+        <label for="book_body">Opinion</label><br>
+        <%= f.text_area :body %>
+      </div>
+
+      <div clas="form-group">
+        <%= f.submit 'Create Book' %>
+      </div>
+      <% end %>
+    </div>
+    <!--共通テンプレート-->

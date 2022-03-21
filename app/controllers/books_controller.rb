@@ -2,11 +2,15 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-    @book = Book.new
+    @new = Book.new
+    @user = current_user
   end
 
   def show
     @book = Book.find(params[:id])
+    @new = Book.new
+    # 投稿内容に紐づいたuseridを持ってくる
+    @user = @book.user_id
   end
 
   def edit
