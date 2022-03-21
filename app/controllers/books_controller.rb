@@ -23,11 +23,10 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     # 投稿したデータにログイン中のユーザーのIDを持たせる
     @book.user_id = current_user.id
-    if @book.valid?
     # データをデータベースに保存するためのsaveメソッド実行
-       @book.save
+    if @book.save
     # booksのshow画面へリダイレクト
-       return redirect_to book_path(@book.user_id), notice: 'Book was successfully created.'
+       redirect_to book_path(@book.user_id), notice: 'Book was successfully created.'
     else
        @books = Book.all
        render :index
