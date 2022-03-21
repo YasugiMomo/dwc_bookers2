@@ -15,6 +15,11 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    if @book.user == current_user
+      render edit_book_path(@book.id)
+    else
+      redirect_to books_path
+    end
   end
 
 
@@ -52,7 +57,7 @@ class BooksController < ApplicationController
     book.destroy
     # 投稿一覧画面へリダイレクト
     flash[:notice] = 'Book was successfully destroyed.'
-    redirect_to '/books'
+    redirect_to books_path
   end
 
 
@@ -61,5 +66,6 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
+
 
 end
