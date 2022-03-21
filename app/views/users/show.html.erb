@@ -1,4 +1,10 @@
-<p id="notice"></p>
+<!--フラッシュメッセージ-->
+<div class="flash-notifications">
+  <% flash.each do |key, value| %>
+   <%= content_tag(:div, value, class: key) %>
+  <% end %>
+</div>
+
 <div class="container">
   <div class="row">
    <!--共通テンプレート-->

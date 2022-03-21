@@ -26,14 +26,13 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <!--userの詳細画面-->
+              <% if user_signed_in? %>
               <li>
-                <%= link_to '/', class: "nav-link text-light" do %>
+                <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
                   <i class="fas fa-home"></i>
                   <span>Home</span>
                 <% end %>
               </li>
-
-              <% if user_signed_in? %>
               <!--userの一覧画面-->
               <li>
                  <%= link_to '/users', class: "nav-link text-light" do %>
@@ -56,6 +55,12 @@
                 <% end %>
               </li>
               <% else %>
+              <li>
+                <%= link_to '/', class: "nav-link text-light" do %>
+                  <i class="fas fa-home"></i>
+                  <span>Home</span>
+                <% end %>
+              </li>
               <!--homesのaboutページ-->
               <li>
                  <%= link_to about_path, class: "nav-link text-light" do %>

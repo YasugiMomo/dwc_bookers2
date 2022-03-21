@@ -1,9 +1,15 @@
+<!--フラッシュメッセージ-->
+<div class="flash-notifications">
+  <% flash.each do |key, value| %>
+   <%= content_tag(:div, value, class: key) %>
+  <% end %>
+</div>
 
 <div class="container">
   <div class="row">
    <!--部分テンプレート-->
    <%= render 'books/user_info', user: @user, new: @new %>
-   
+
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
@@ -24,7 +30,7 @@
               <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %>
             </td>
             <td>
-              <%= link_to "Destroy", book_path(@book.id),  class: "btn btn-sm btn-danger", method: :delete %>
+              <%= link_to "Destroy", book_path(@book.id),  class: "btn btn-sm btn-danger", method: :delete, data: {confirm: "削除しますか？"} %>
             </td>
           </tr>
         </tbody>
