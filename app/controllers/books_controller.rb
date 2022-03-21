@@ -9,8 +9,8 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @new = Book.new
-    # 投稿内容に紐づいたuseridを持ってくる
-    @user = @book.user_id
+    # 投稿内容に紐づいたuser情報を持ってくる
+    @user = @book.user
   end
 
   def edit
