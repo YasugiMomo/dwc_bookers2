@@ -16,24 +16,25 @@ class BooksController < ApplicationController
   def edit
     @book = Book.find(params[:id])
     if @book.user == current_user
-      render edit_book_path(@book.id)
+      render :edit
     else
-      redirect_to books_path
+      redirect_to '/books'
     end
   end
 
 
   def create
     # データを受け取り新規登録するためのインスタンス作成
-    @book = Book.new(book_params)
+    @new = Book.new(book_params)
     # 投稿したデータにログイン中のユーザーのIDを持たせる
-    @book.user_id = current_user.id
+    @new.user_id = current_user.id
     # データをデータベースに保存するためのsaveメソッド実行
-    if @book.save
+    if @new.save
     # booksのshow画面へリダイレクト
-       redirect_to book_path(@book.user_id), notice: 'Book was successfully created.'
+       redirect_to book_path(@new.id), notice: 'Book was successfully created.'
     else
        @books = Book.all
+       @user = current_user
        render :index
     end
   end
@@ -64,7 +65,7 @@ class BooksController < ApplicationController
   private
   # ストロングパラメータ
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :user_id)
   end
 
 

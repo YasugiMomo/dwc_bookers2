@@ -4,17 +4,19 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h1>Editing Book</h1>
-      <!--エラーメッセージ-->
+
+      <div class="error_explanation">
        <% if @book.errors.any? %>
-        <%= @book.errors.count %>件のエラーが発生しました
+        <%= @book.errors.count %>errors prohibited this obj from being saved:
         <ul>
     　     <% @book.errors.full_messages.each do |message| %>
       　　   　<li><%= message %></li>
     　　    <% end %>
   　　　　</ul>
 　　　<% end %>
+      </div>
 
+      <h1>Editing Book</h1>
       <%= form_with model: @book, url: book_path(@book.id) ,method: :patch do |f| %>
         <div class="form-group">
           <label for="book_title">Title</label><br>
@@ -29,9 +31,7 @@
         </div>
       <% end %>
       <!--投稿の詳細画面へ-->
-      <%= link_to 'show', book_path, method: :get %>
- 　　　　 |
-  　　<%= link_to 'Back', '/books' %>
+      <%= link_to 'show', book_path(@book.id), method: :get %>|<%= link_to 'Back', '/books' %>
     </div>
   </div>
 </div>

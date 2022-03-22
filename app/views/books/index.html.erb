@@ -1,6 +1,19 @@
 
 <div class="container px-5 px-sm-0">
+
+  <div class="error_explanation">
+    <% if @new.errors.any? %>
+  　　<%= @new.errors.count %>errors prohibited this obj from being saved:
+  　　<ul>
+    　　<% @new.errors.full_messages.each do |message| %>
+      　　<li><%= message %></li>
+    　　<% end %>
+  　　</ul>
+　　<% end %>
+  </div>
+
   <div class="row">
+
     <!--共通テンプレート-->
     <%= render 'books/user_info', user: @user, new: @new %>
 
@@ -23,7 +36,7 @@
             <!--投稿に紐づくユーザーの画像-->
             <td>
 
-            <%= link_to image_tag(book.user.get_profile_image(100,100)), user_path(book.user.id) %>
+            <%= link_to image_tag(book.user.get_profile_image(100,100)), user_path(book.user) %>
             </td>
             <!--ユーザーが投稿したtitle-->
             <td>
