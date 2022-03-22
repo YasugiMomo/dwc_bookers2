@@ -25,7 +25,7 @@
           <% @books.each do |book| %>
           <tr>
             <td>
-              <%= image_tag @user.get_profile_image(100,100) %>
+              <%= link_to image_tag(@user.get_profile_image(100,100)), user_path(@user) %>
             </td>
             <!--user_idに紐づいた投稿を持ってくる-->
             <td>
